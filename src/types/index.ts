@@ -32,6 +32,12 @@ export interface GroupMember {
 }
 
 export interface SwipeSession {
+  /**
+   * Client-generated identifier used to upsert into swipe session history.
+   * Optional for backward compatibility with legacy localStorage entries.
+   */
+  id?: string;
+  createdAt?: string;
   groupCode: string;
   userId: string;
   votes: Record<string, Record<string, 'like' | 'skip'>>;

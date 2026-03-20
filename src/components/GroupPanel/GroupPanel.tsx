@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useApp } from '@/context/AppContext';
 import { Group } from '@/types';
+import { getStoredGroupsHistory } from '@/lib/storage';
 import styles from './GroupPanel.module.scss';
 
 export default function GroupPanel() {
@@ -22,13 +23,20 @@ export default function GroupPanel() {
       setJoinError('Please enter a group code.');
       return;
     }
+    const code = joinCode.toUpperCase();
     const mockGroup: Group = {
-      code: joinCode.toUpperCase(),
+      code,
       members: [],
       createdAt: new Date().toISOString(),
     };
+
+    // Merge into an existing locally-stored group (when available),
+    // so joining adds a member instead of overwriting with an empty group.
+    const existingGroup =
+      getStoredGroupsHistory().find(g => g.code === code) ?? mockGroup;
+
     setJoinError('');
-    joinExistingGroup(joinCode.toUpperCase(), mockGroup);
+    joinExistingGroup(code, existingGroup);
   }
 
   async function handleCopy() {

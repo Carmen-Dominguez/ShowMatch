@@ -18,10 +18,7 @@ export default function MatchesPage() {
 
   if (!profile || !group || !session) return null;
 
-  const displayMatches =
-    group.members.length === 1
-      ? titles.filter(t => session.votes[profile.id]?.[String(t.id)] === 'like')
-      : matches;
+  const displayMatches = matches;
 
   return (
     <main className={styles.main}>

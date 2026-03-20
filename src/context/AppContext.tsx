@@ -25,6 +25,10 @@ import {
   clearProfile,
   clearGroup,
   clearSession,
+  upsertGroupInHistory,
+  upsertSessionInHistory,
+  clearGroupsHistory,
+  clearSessionsHistory,
 } from '@/lib/storage';
 import {
   createGroup as createGroupFn,
@@ -141,6 +145,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const updatedProfile = { ...state.profile, groupCode: group.code };
     saveProfile(updatedProfile);
     saveGroup(group);
+    upsertGroupInHistory(group);
     dispatch({ type: 'SET_PROFILE', payload: updatedProfile });
     dispatch({ type: 'SET_GROUP', payload: group });
   }, [state.profile]);
@@ -152,6 +157,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       const updatedProfile = { ...state.profile, groupCode: code };
       saveProfile(updatedProfile);
       saveGroup(updatedGroup);
+      upsertGroupInHistory(updatedGroup);
       dispatch({ type: 'SET_PROFILE', payload: updatedProfile });
       dispatch({ type: 'SET_GROUP', payload: updatedGroup });
     },
@@ -184,6 +190,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         }
 
         const session: SwipeSession = {
+          id: crypto.randomUUID(),
+          createdAt: new Date().toISOString(),
           groupCode: state.group.code,
           userId: state.profile.id,
           votes: {},
@@ -192,6 +200,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         };
 
         saveSession(session);
+        upsertSessionInHistory(session);
         dispatch({ type: 'SET_TITLES', payload: titles });
         dispatch({ type: 'SET_SESSION', payload: session });
       } catch (err) {
@@ -234,6 +243,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       };
 
       saveSession(updatedSession);
+      upsertSessionInHistory(updatedSession);
       dispatch({ type: 'SET_SESSION', payload: updatedSession });
 
       if (isMatch) {
@@ -254,6 +264,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         currentMemberId: userId,
       };
       saveSession(updatedSession);
+      upsertSessionInHistory(updatedSession);
       dispatch({ type: 'SET_SESSION', payload: updatedSession });
     },
     [state.session]
@@ -263,6 +274,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     clearProfile();
     clearGroup();
     clearSession();
+    clearGroupsHistory();
+    clearSessionsHistory();
     dispatch({ type: 'CLEAR_ALL' });
   }, []);
 

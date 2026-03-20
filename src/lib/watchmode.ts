@@ -27,7 +27,7 @@ export async function fetchTitlesList(
     source_ids: sourceIds.join(','),
     regions: region,
     page: page.toString(),
-    limit: '20',
+    limit: '10',
   });
 
   if (filters.contentType !== 'all') {
