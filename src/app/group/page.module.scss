@@ -1,0 +1,55 @@
+@import '../../styles/mixins';
+
+.main {
+  min-height: 100vh;
+  padding: $spacing-lg $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+}
+
+.header {
+  @include flex-between;
+}
+
+.back {
+  @include button-secondary;
+  padding: $spacing-xs $spacing-md;
+}
+
+.logo {
+  @include flex-center;
+  gap: $spacing-sm;
+}
+
+.logoText {
+  font-size: $font-size-xl;
+  font-weight: 800;
+  background: linear-gradient(135deg, $color-primary, $color-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xl;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: 800;
+  margin-bottom: $spacing-sm;
+}
+
+.subtitle {
+  color: $color-text-secondary;
+  font-size: $font-size-lg;
+  max-width: 400px;
+}

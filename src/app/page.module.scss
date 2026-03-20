@@ -1,0 +1,37 @@
+@import '../styles/mixins';
+
+.main {
+  min-height: 100vh;
+  @include flex-center;
+  flex-direction: column;
+  padding: $spacing-xl $spacing-md;
+  gap: $spacing-2xl;
+}
+
+.hero {
+  text-align: center;
+}
+
+.logo {
+  @include flex-center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.logoIcon {
+  font-size: 3rem;
+}
+
+.logoText {
+  font-size: $font-size-4xl;
+  font-weight: 800;
+  background: linear-gradient(135deg, $color-primary, $color-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tagline {
+  color: $color-text-muted;
+  font-size: $font-size-lg;
+}

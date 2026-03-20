@@ -1,0 +1,88 @@
+@import '../../styles/mixins';
+
+.main {
+  min-height: 100vh;
+  padding: $spacing-lg $spacing-md $spacing-2xl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.header {
+  @include flex-between;
+}
+
+.back {
+  @include button-secondary;
+  padding: $spacing-xs $spacing-md;
+  font-size: $font-size-sm;
+}
+
+.logo {
+  @include flex-center;
+  gap: $spacing-sm;
+}
+
+.logoText {
+  font-size: $font-size-lg;
+  font-weight: 800;
+  background: linear-gradient(135deg, $color-primary, $color-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.titleSection {
+  text-align: center;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 800;
+  margin-bottom: $spacing-sm;
+}
+
+.subtitle {
+  color: $color-text-secondary;
+  font-size: $font-size-lg;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-md;
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.empty {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-lg;
+  padding: $spacing-3xl;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+}
+
+.swipeBtn {
+  @include button-primary;
+}
