@@ -40,6 +40,8 @@ export interface SwipeSession {
   createdAt?: string;
   groupCode: string;
   userId: string;
+  // Stored title IDs for the shared session (server-backed); optional for legacy sessions.
+  titleIds?: number[];
   votes: Record<string, Record<string, 'like' | 'skip'>>;
   filters: ContentFilters;
   currentMemberId: string;
