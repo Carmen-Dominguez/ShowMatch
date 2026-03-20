@@ -1,0 +1,63 @@
+@import '../../styles/mixins';
+
+.form {
+  @include card;
+  width: 100%;
+  max-width: 480px;
+  padding: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  text-align: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input {
+  @include input-base;
+}
+
+.select {
+  @include input-base;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239a9a9a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right $spacing-md center;
+  padding-right: $spacing-2xl;
+
+  option {
+    background: $color-bg-card;
+  }
+}
+
+.error {
+  color: $color-error;
+  font-size: $font-size-sm;
+  text-align: center;
+}
+
+.submit {
+  @include button-primary;
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-lg;
+  margin-top: $spacing-sm;
+}

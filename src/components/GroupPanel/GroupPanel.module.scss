@@ -1,0 +1,165 @@
+@import '../../styles/mixins';
+
+.panel {
+  @include card;
+  padding: $spacing-xl;
+  width: 100%;
+  max-width: 480px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid $color-border;
+  margin-bottom: $spacing-lg;
+}
+
+.tab {
+  flex: 1;
+  padding: $spacing-sm $spacing-md;
+  background: none;
+  border: none;
+  color: $color-text-muted;
+  font-size: $font-size-base;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color $transition-fast;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.activeTab {
+  color: $color-text;
+  border-bottom-color: $color-primary;
+}
+
+.createSection, .joinSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.description {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  line-height: 1.6;
+}
+
+.primaryBtn {
+  @include button-primary;
+  width: 100%;
+}
+
+.codeInput {
+  @include input-base;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: $font-size-xl;
+  text-align: center;
+  font-weight: 700;
+}
+
+.error {
+  color: $color-error;
+  font-size: $font-size-sm;
+}
+
+.groupInfo {
+  margin-bottom: $spacing-xl;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  margin-bottom: $spacing-md;
+}
+
+.code {
+  @include flex-between;
+  background: $color-bg-input;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  margin-bottom: $spacing-sm;
+}
+
+.codeText {
+  font-size: $font-size-2xl;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: $color-secondary;
+}
+
+.copyBtn {
+  @include button-secondary;
+  padding: $spacing-xs $spacing-md;
+  font-size: $font-size-sm;
+}
+
+.hint {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  text-align: center;
+}
+
+.members {
+  border-top: 1px solid $color-border;
+  padding-top: $spacing-lg;
+}
+
+.membersTitle {
+  font-size: $font-size-base;
+  font-weight: 600;
+  margin-bottom: $spacing-md;
+  color: $color-text-secondary;
+}
+
+.member {
+  @include flex-between;
+  padding: $spacing-sm 0;
+  border-bottom: 1px solid rgba($color-border, 0.5);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.memberAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  background: $color-primary;
+  @include flex-center;
+  font-weight: 700;
+  font-size: $font-size-sm;
+  flex-shrink: 0;
+}
+
+.memberInfo {
+  flex: 1;
+  margin-left: $spacing-md;
+}
+
+.memberName {
+  display: block;
+  font-weight: 600;
+  font-size: $font-size-sm;
+}
+
+.memberServices {
+  display: block;
+  font-size: $font-size-sm;
+  margin-top: 2px;
+}
+
+.youBadge {
+  font-size: $font-size-xs;
+  background: $color-primary;
+  color: white;
+  padding: 2px $spacing-sm;
+  border-radius: $radius-full;
+  font-weight: 600;
+}

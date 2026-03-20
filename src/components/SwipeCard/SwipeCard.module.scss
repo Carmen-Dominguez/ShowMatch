@@ -1,0 +1,235 @@
+@import '../../styles/mixins';
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  background: $color-bg-card;
+  box-shadow: $shadow-lg;
+  user-select: none;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.dragging {
+  transition: none !important;
+}
+
+.likeOverlay,
+.skipOverlay {
+  position: absolute;
+  top: $spacing-xl;
+  z-index: 10;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-md;
+  font-size: $font-size-xl;
+  font-weight: 800;
+  border: 3px solid;
+  pointer-events: none;
+}
+
+.likeOverlay {
+  left: $spacing-lg;
+  color: $color-success;
+  border-color: $color-success;
+  transform: rotate(-15deg);
+}
+
+.skipOverlay {
+  right: $spacing-lg;
+  color: $color-error;
+  border-color: $color-error;
+  transform: rotate(15deg);
+}
+
+.poster {
+  position: relative;
+  width: 100%;
+  padding-top: 140%;
+  background: $color-bg-input;
+}
+
+.posterImg {
+  object-fit: cover;
+}
+
+.posterPlaceholder {
+  position: absolute;
+  inset: 0;
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-md;
+  background: linear-gradient(135deg, $color-bg-card, $color-bg-input);
+}
+
+.placeholderIcon {
+  font-size: 4rem;
+}
+
+.placeholderText {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 $spacing-lg;
+  color: $color-text-secondary;
+}
+
+.posterGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, $color-bg-card);
+}
+
+.info {
+  padding: $spacing-md $spacing-lg $spacing-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.header {
+  @include flex-between;
+  align-items: flex-start;
+  gap: $spacing-md;
+}
+
+.titleText {
+  font-size: $font-size-xl;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.year {
+  color: $color-text-muted;
+  font-size: $font-size-sm;
+}
+
+.rating {
+  font-size: $font-size-xs;
+  border: 1px solid $color-border;
+  padding: 1px $spacing-xs;
+  border-radius: $radius-sm;
+  color: $color-text-muted;
+}
+
+.type {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.imdbRating {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-weight: 700;
+  font-size: $font-size-lg;
+  flex-shrink: 0;
+}
+
+.star {
+  font-size: $font-size-base;
+}
+
+.genres {
+  display: flex;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.genre {
+  font-size: $font-size-xs;
+  background: $color-bg-input;
+  border-radius: $radius-full;
+  padding: 2px $spacing-sm;
+  color: $color-text-secondary;
+}
+
+.plot {
+  cursor: pointer;
+}
+
+.plotText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.5;
+  @include truncate-lines(3);
+  cursor: pointer;
+}
+
+.plotExpanded {
+  display: block;
+  -webkit-line-clamp: unset;
+}
+
+.readMore {
+  background: none;
+  border: none;
+  color: $color-secondary;
+  font-size: $font-size-xs;
+  cursor: pointer;
+  padding: 0;
+  margin-top: $spacing-xs;
+}
+
+.swipingFor {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  text-align: center;
+
+  strong {
+    color: $color-secondary;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-xl;
+  padding: $spacing-md $spacing-lg $spacing-lg;
+}
+
+.actionBtn {
+  width: 60px;
+  height: 60px;
+  border-radius: $radius-full;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all $transition-base;
+  @include flex-center;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.skipBtn {
+  background: rgba($color-error, 0.15);
+  color: $color-error;
+  border: 2px solid $color-error;
+}
+
+.likeBtn {
+  background: rgba($color-success, 0.15);
+  border: 2px solid $color-success;
+}

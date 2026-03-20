@@ -1,0 +1,114 @@
+@import '../../styles/mixins';
+
+.panel {
+  @include card;
+  padding: $spacing-xl;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: 700;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.sectionLabel {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  @include flex-between;
+}
+
+.ratingValue {
+  color: $color-warning;
+  font-weight: 700;
+}
+
+.radioGroup {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.radioLabel {
+  @include flex-center;
+  gap: $spacing-xs;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  background: $color-bg-input;
+  transition: all $transition-fast;
+  flex: 1;
+
+  &:has(input:checked) {
+    border-color: $color-primary;
+    background: rgba($color-primary, 0.15);
+  }
+}
+
+.radioInput {
+  display: none;
+}
+
+.radioText {
+  font-size: $font-size-sm;
+  font-weight: 600;
+}
+
+.slider {
+  width: 100%;
+  accent-color: $color-primary;
+  cursor: pointer;
+}
+
+.sliderLabels {
+  @include flex-between;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+}
+
+.genreGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}
+
+.genreBtn {
+  padding: $spacing-xs $spacing-md;
+  border-radius: $radius-full;
+  border: 1px solid $color-border;
+  background: $color-bg-input;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $color-text-muted;
+    color: $color-text;
+  }
+}
+
+.genreSelected {
+  background: rgba($color-primary, 0.2);
+  border-color: $color-primary;
+  color: $color-text;
+}
+
+.startBtn {
+  @include button-primary;
+  width: 100%;
+  padding: $spacing-md;
+  font-size: $font-size-lg;
+}
